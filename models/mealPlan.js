@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 // const bcrypt = require('bcrypt');
 
 const mealSchema = new Schema({
-    description: {type: String, required: true},
+    name: {type: String, required: true},
     energy: { type: Number },
     protein: { type: Number},
     carbs: { type: Number},
@@ -31,10 +31,10 @@ const mealSchema = new Schema({
 
 const mealPlanSchema = new Schema({
     name: {type: String, required: true},
-    breakfast: {mealSchema},
-    lunch: {mealSchema},
-    dinner: {mealSchema},
-    snack: {mealSchema},
+    breakfast: [mealSchema],
+    lunch: [mealSchema],
+    dinner: [mealSchema],
+    snacks: [mealSchema],
 }, {
     timestampes: true,
     toJSON: {

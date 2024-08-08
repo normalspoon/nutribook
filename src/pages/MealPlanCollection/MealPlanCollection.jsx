@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { checkToken } from "../../utilities/users-service";
+import { checkToken } from "../../utilities/users-service"
 
 export default function MealPlanCollection() {
     async function handleCheckToken() {
