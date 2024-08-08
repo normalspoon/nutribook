@@ -6,7 +6,7 @@ import NavBar from '../../components/NavBar/NavBar'
 
 import { Routes, Route } from "react-router-dom"
 import { getUser } from '../../utilities/users-service';
-import OrderHistoryPage from '../OrderHistoryPage/OrderHistoryPage';
+import MealPlanCollection from '../MealPlanCollection/MealPlanCollection';
 export default function App() {
   const [user, setUser] = useState(getUser());
   return (
@@ -15,9 +15,9 @@ export default function App() {
       <>
         <NavBar user={user} setUser={setUser} />
         <Routes>
-          <Route path="/" element={<DailyMealPage />} />
-          <Route path="/orders/new" element={<DailyMealPage />} />
-          <Route path="/orders" element={<OrderHistoryPage />} />
+          <Route path="/" element={<MealPlanCollection />} />
+          <Route path="/AddMeal" element={<DailyMealPage />} />
+          <Route path="/MealPlanCollection" element={<MealPlanCollection />} />
         </Routes>
       </>
       :
