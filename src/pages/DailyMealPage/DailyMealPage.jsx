@@ -11,7 +11,27 @@ export default function DailyMealPage() {
         snack: [],
     });
 
+    function handleSaveMealPlan(){
+        createPlan(mealPlan).then(response => {
+            console.log('Meal plann saved', response);
+        }).catch(error => {
+            console.error('Error saving meal plan', error);
+        });
+    }
 
+    function handleMealAdd(mealType, meal){
+        setMealPlan(prevState => ({
+            ...prevState,
+            [mealType]: [...prevState[mealType], meal]
+        }))
+    }
+
+    function handleNameChange(event) {
+        setMealPlan(prevState => ({
+            ...prevState,
+            name: event.target.value
+        }));
+    }
     return (
         <div>
         <h1>Daily Meal Page</h1>

@@ -14,7 +14,7 @@ export default function SearchBar({ mealType, onMealSelect }) {
       console.log("this is the data",data);
       setAutocomplete(data.foods.map(foodSuggestions => ({ 
         id: foodSuggestions.fdcId, 
-        name: foodSuggestions.description,
+        description: foodSuggestions.description,
         energy: foodSuggestions.foodNutrients.find(nutrient => nutrient.nutrientName === 'Energy')?.value,
       })));
     } catch (error) {
@@ -24,15 +24,20 @@ export default function SearchBar({ mealType, onMealSelect }) {
   };
 
   const handleOnSearch = (query) => {
-
+    setSearchInput(query);
+    if (query.length>=3){
+      fetchFoodAutocomplete(query);
+    } else {
+      setAutocomplete([]);
+    }
   }
   
   const handleOnSelect = async (item) => {
- 
+    onMealSelect(item);
   };
 
   const handleOnChange = (query) => {
-  
+    setSearchInput(query);
   };
 
   return <div>
