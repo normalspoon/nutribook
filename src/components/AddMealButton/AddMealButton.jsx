@@ -15,7 +15,7 @@ export default function AddMealButton( {mealType, onMealAdd}) {
     <div style={{ justifyContent: 'center', alignItems: 'center'}}>
         <button onClick={openSearchBar}>Add meal</button>
         {showSearchBar? <div> 
-        <table>
+        <table className='input-table'>
             <tr>
                 <td className='search-bar'>
                     <SearchBar mealType={mealType} onMealSelect={handleMealSelect}/> 

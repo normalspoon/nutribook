@@ -1,7 +1,14 @@
 .search-bar {
-    width: 50%;
+    width: 400px;
 }
 
 .amount-input {
-    width: 50%;
+    width: 10px;
+}
+
+.input-table {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
 }

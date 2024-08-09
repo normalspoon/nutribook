@@ -14,7 +14,7 @@ export default function SearchBar({ mealType, onMealSelect }) {
       console.log("this is the data",data);
       setAutocomplete(data.foods.map(foodSuggestions => ({ 
         id: foodSuggestions.fdcId, 
-        description: foodSuggestions.description,
+        name: foodSuggestions.description,
         energy: foodSuggestions.foodNutrients.find(nutrient => nutrient.nutrientName === 'Energy')?.value,
       })));
     } catch (error) {
