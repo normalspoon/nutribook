@@ -37,6 +37,7 @@ export default function AddMealButton( {mealType, onMealAdd}) {
                 </td>
                 <td className='add-button'>
                     <button onClick={handleAddMeal}>Add</button>
+                    
                 </td>
             </tr>
         </table>

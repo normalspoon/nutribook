@@ -1,6 +1,7 @@
 import AddMealButton from "../../components/AddMealButton/AddMealButton";
 import { useState } from "react";
 import { createPlan } from "../../utilities/plans-api";
+import { Link } from "react-router-dom";
     
 export default function DailyMealPage() {
     const [mealPlan, setMealPlan] = useState({
@@ -74,7 +75,9 @@ export default function DailyMealPage() {
                 ))}
             </div>
             <div className='nutritionScore'>
+            <Link to= "/">
                 <button onClick={handleSaveMealPlan}>Save Meal Plan</button>
+            </Link>
                 <h2>Nutrition Score</h2>
             </div>
         </div>
