@@ -2,7 +2,9 @@ import {useState} from 'react';
 import SearchBar from '../SearchBar/SearchBar';
 import './AddMealButton.css';
 
-export default function AddMealButton( {mealType, onMealAdd, setAmount, amount, meal}) {
+export default function AddMealButton( {mealType, onMealAdd}) {
+    const [meal, setMeal] = useState(null);
+    const [amount, setAmount] = useState(0);
   
 
     function handleAmountChange(event) {
@@ -10,7 +12,11 @@ export default function AddMealButton( {mealType, onMealAdd, setAmount, amount, 
     }
 
     function handleAddMeal() {
-        onMealAdd(mealType, meal, amount);
+        if (meal && amount) {
+            onMealAdd(mealType, {...meal, amount})
+            setMeal(null);
+            setAmount(0);
+        }
     }
 
     return (
@@ -20,13 +26,17 @@ export default function AddMealButton( {mealType, onMealAdd, setAmount, amount, 
         <table className='input-table'>
             <tr>
                 <td className='search-bar'>
-                    <SearchBar mealType={mealType}/> 
+                    <SearchBar mealType={mealType} onMealSelect={setMeal}/> 
                 </td>
                 <td className='amount-input'>
-                    <input type="number" placeholder="Amount in grams" onChange={handleAmountChange} />
+                    <input 
+                    type="number" 
+                    alue ={amount}
+                    placeholder="Amount in grams" 
+                    onChange={handleAmountChange} />
                 </td>
                 <td className='add-button'>
-                    <button onClick={handleAddMeal} onAmountChange={handleAmountChange}>Add</button>
+                    <button onClick={handleAddMeal}>Add</button>
                 </td>
             </tr>
         </table>

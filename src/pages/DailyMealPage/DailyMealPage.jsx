@@ -20,10 +20,10 @@ export default function DailyMealPage() {
         });
     }
 
-    function handleMealAdd(mealType, meal, amount){
+    function handleMealAdd(mealType, meal){
         setMealPlan(prevState => ({
             ...prevState,
-            [mealType]: [...prevState[mealType], meal, amount]
+            [mealType]: [...prevState[mealType], meal]
         }))
     }
 
@@ -34,12 +34,7 @@ export default function DailyMealPage() {
         }));
     }
 
-    function handleAmountChange(event) {
-        setMealPlan(prevState => ({
-            ...prevState,
-            amount: event.target.value,
-        }));
-    }
+
     return (
         <div>
         <h1>Daily Meal Page</h1>
@@ -53,27 +48,27 @@ export default function DailyMealPage() {
         <div className='dailyMeals'>
                 <h2>Breakfast</h2>
                 {mealPlan.breakfast.map((meal, index) => (
-                    <div key={index}>{meal.name} - {meal.energy} kcal</div>
+                    <div key={index}>{meal.name} - {meal.amount} grams - {meal.energy} kcal</div>
                 ))}
-                <AddMealButton mealType="breakfast" onMealAdd={handleMealAdd} onAmountChange={handleAmountChange}/>
+                <AddMealButton mealType="breakfast" onMealAdd={handleMealAdd}/>
                 
                 <h2>Lunch</h2>
                 {mealPlan.lunch.map((meal, index) => (
-                    <div key={index}>{meal.name} - {meal.energy} kcal</div>
+                    <div key={index}>{meal.name} - {meal.amount} grams - {meal.energy} kcal</div>
                 ))}
-                <AddMealButton mealType="lunch" onMealAdd={handleMealAdd} onAmountChange={handleAmountChange}/>
+                <AddMealButton mealType="lunch" onMealAdd={handleMealAdd}/>
                 
                 <h2>Dinner</h2>
                 {mealPlan.dinner.map((meal, index) => (
-                    <div key={index}>{meal.name} - {meal.energy} kcal</div>
+                    <div key={index}>{meal.name} - {meal.amount} grams - {meal.energy} kcal</div>
                 ))}
-                <AddMealButton mealType="dinner" onMealAdd={handleMealAdd} onAmountChange={handleAmountChange}/>
+                <AddMealButton mealType="dinner" onMealAdd={handleMealAdd}/>
                 
                 <h2>Snack</h2>
                 {mealPlan.snack.map((meal, index) => (
-                    <div key={index}>{meal.name} - {meal.energy} kcal</div>
+                    <div key={index}>{meal.name} - {meal.amount} grams - {meal.energy} kcal</div>
                 ))}
-                <AddMealButton mealType="snack" onMealAdd={handleMealAdd} onAmountChange={handleAmountChange}/>
+                <AddMealButton mealType="snack" onMealAdd={handleMealAdd}/>
             </div>
             <div className='nutritionScore'>
                 <button onClick={handleSaveMealPlan}>Save Meal Plan</button>
