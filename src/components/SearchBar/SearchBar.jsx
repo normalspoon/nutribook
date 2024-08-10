@@ -2,7 +2,7 @@ import { useState } from "react"
 import { ReactSearchAutocomplete } from "react-search-autocomplete";
 
 
-export default function SearchBar({ mealType, onMealSelect }) {
+export default function SearchBar({ onMealSelect }) {
   const [searchInput, setSearchInput] = useState('');
   const [autocomplete, setAutocomplete] = useState([]);
 
