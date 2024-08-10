@@ -47,28 +47,31 @@ export default function DailyMealPage() {
         </div>
         <div className='dailyMeals'>
                 <h2>Breakfast</h2>
+                <AddMealButton mealType="breakfast" onMealAdd={handleMealAdd}/>
                 {mealPlan.breakfast.map((meal, index) => (
                     <div key={index}>{meal.name} - {meal.amount} grams - {((meal.energy /100) * meal.amount)} kcal</div>
                 ))}
-                <AddMealButton mealType="breakfast" onMealAdd={handleMealAdd}/>
+                
                 
                 <h2>Lunch</h2>
+                <AddMealButton mealType="lunch" onMealAdd={handleMealAdd}/>
                 {mealPlan.lunch.map((meal, index) => (
                     <div key={index}>{meal.name} - {meal.amount} grams - {((meal.energy /100) * meal.amount)} kcal</div>
                 ))}
-                <AddMealButton mealType="lunch" onMealAdd={handleMealAdd}/>
+                
                 
                 <h2>Dinner</h2>
+                <AddMealButton mealType="dinner" onMealAdd={handleMealAdd}/>
                 {mealPlan.dinner.map((meal, index) => (
                     <div key={index}>{meal.name} - {meal.amount} grams - {((meal.energy /100) * meal.amount)} kcal</div>
                 ))}
-                <AddMealButton mealType="dinner" onMealAdd={handleMealAdd}/>
+                
                 
                 <h2>Snack</h2>
+                <AddMealButton mealType="snack" onMealAdd={handleMealAdd}/>
                 {mealPlan.snack.map((meal, index) => (
                     <div key={index}>{meal.name} - {meal.amount} grams - {((meal.energy /100) * meal.amount)} kcal</div>
                 ))}
-                <AddMealButton mealType="snack" onMealAdd={handleMealAdd}/>
             </div>
             <div className='nutritionScore'>
                 <button onClick={handleSaveMealPlan}>Save Meal Plan</button>
