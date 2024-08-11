@@ -3,6 +3,7 @@ import {useState, useEffect} from 'react'
 import {getPlans} from '../../utilities/plans-api'
 import { Link } from 'react-router-dom'
 import './PlanCards.css'
+import MealDetailPage from '../../pages/MealDetailPage/MealDetailPage'
 export default function PlanCards(){
     const [plans, setPlans] = useState([])
 
@@ -23,8 +24,9 @@ export default function PlanCards(){
         <>
         <div className = 'cardContainer'>
             {plans.map(plan => (
-                <Link to = {`/meal-detail/${plan._id}`}>
+                <Link to = {`/meal-detail/${plan._id}`} key={plan._id}>
                 <div className = 'cardOutline'>{plan.name}</div>
+                <MealDetailPage planDetails={plan}/>
                 </Link>
             ))}
         </div>
