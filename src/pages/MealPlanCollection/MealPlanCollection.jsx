@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import { checkToken } from "../../utilities/users-service"
-import  PlanCards from '../../components/PlanCards/PlanCards'
-
+import PlanCards from "../../components/PlanCards/PlanCards";
 export default function MealPlanCollection() {
     async function handleCheckToken() {
        const expDate = await checkToken()

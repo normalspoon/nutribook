@@ -1,24 +1,28 @@
-import react from 'react'
-import {useState, useEffect} from 'react'
-import {getPlans} from '../../utilities/plans-api'
+// import {useState, useEffect} from 'react'
+import {useContext} from 'react'
+// import {getPlans} from '../../utilities/plans-api'
 import { Link } from 'react-router-dom'
 import './PlanCards.css'
-import MealDetailPage from '../../pages/MealDetailPage/MealDetailPage'
+import { PlansContext } from '../../context/PlansContext'
+
 export default function PlanCards(){
-    const [plans, setPlans] = useState([])
+    const {plans} = useContext(PlansContext)
+    
+    //refactoring to context to be more DRY
+    // const [plans, setPlans] = useState([])
 
-    async function fetchPlans() {
-        try {
-            const data = await getPlans();
-            setPlans(data);
-        } catch (error) {
-            console.error('error fetching meal plans for collection', error)
-        }
-    }
+    // async function fetchPlans() {
+    //     try {
+    //         const data = await getPlans();
+    //         setPlans(data);
+    //     } catch (error) {
+    //         console.error('error fetching meal plans for collection', error)
+    //     }
+    // }
 
-    useEffect(() => {
-        fetchPlans();
-    }, [])
+    // useEffect(() => {
+    //     fetchPlans();
+    // }, [])
 
     return(
         <>
@@ -26,11 +30,9 @@ export default function PlanCards(){
             {plans.map(plan => (
                 <Link to = {`/meal-detail/${plan._id}`} key={plan._id}>
                 <div className = 'cardOutline'>{plan.name}</div>
-                <MealDetailPage planDetails={plan}/>
                 </Link>
             ))}
         </div>
-        
         </>
     )
 }
