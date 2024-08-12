@@ -6,6 +6,7 @@ export default function MealDetailPage() {
   const { id } = useParams();
   const { plans } = useContext(PlansContext);
   const [selectedPlan, setSelectedPlan] = useState(null);
+ 
 
   const fetchPlanDetails = async () => {
     const planDetails = plans.find((plan) => plan._id === id);
@@ -16,6 +17,7 @@ export default function MealDetailPage() {
     fetchPlanDetails();
   }, [id, plans]);
 
+  console.log('selectedPlan', selectedPlan);
   if (!selectedPlan) {
     return <div>Loading...</div>;
   }
@@ -27,38 +29,38 @@ export default function MealDetailPage() {
         <h1>{selectedPlan.name}</h1>
       </div>
       <h2>Breakfast</h2>
-      {selectedPlan.breakfast.map((meal, index) => (
+      {selectedPlan.breakfast.map((food, index) => (
         <div key={index}>
-          <p>{meal.name}</p>
+          <p>{food.name}</p>
           <ul>
-            <li>Energy: {meal.energy} Protein: {meal.protein} Carbs: {meal.carbs} Fat: {meal.fat} Sugars: {meal.sugars}</li>
+            <li>Energy: {food.energy} Protein: {food.protein} Carbs: {food.carbs} Fat: {food.fat} Sugars: {food.sugars}</li>
           </ul>
         </div>
       ))}
       <h2>Lunch</h2>
-      {selectedPlan.lunch.map((meal, index) => (
+      {selectedPlan.lunch.map((food, index) => (
         <div key={index}>
-          <p>{meal.name}</p>
+          <p>{food.name}</p>
           <ul>
-            <li>Energy: {meal.energy}</li>
+          <li>Energy: {food.energy} Protein: {food.protein} Carbs: {food.carbs} Fat: {food.fat} Sugars: {food.sugars}</li>
           </ul>
         </div>
       ))}
       <h2>Dinner</h2>
-      {selectedPlan.dinner.map((meal, index) => (
+      {selectedPlan.dinner.map((food, index) => (
         <div key={index}>
-          <p>{meal.name}</p>
+          <p>{food.name}</p>
           <ul>
-            <li>Energy: {meal.energy}</li>
+          <li>Energy: {food.energy} Protein: {food.protein} Carbs: {food.carbs} Fat: {food.fat} Sugars: {food.sugars}</li>
           </ul>
         </div>
       ))}
       <h2>Snacks</h2>
-      {selectedPlan.snack.map((meal, index) => (
+      {selectedPlan.snack.map((food, index) => (
         <div key={index}>
-          <p>{meal.name}</p>
+          <p>{food.name}</p>
           <ul>
-            <li>Energy: {meal.energy}</li>
+          <li>Energy: {food.energy} Protein: {food.protein} Carbs: {food.carbs} Fat: {food.fat} Sugars: {food.sugars}</li>
           </ul>
         </div>
       ))}
@@ -68,7 +70,7 @@ export default function MealDetailPage() {
           <thead>
             <tr>
               <th>Energy</th>
-              <td>{selectedPlan.energy}</td>
+              <td>{selectedPlan.breakfast.energy}</td>
             </tr>
             <tr>
               <th>Protein</th>
