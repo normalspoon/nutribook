@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { PlansContext } from "../../context/PlansContext";
+import './MealDetailPage.css';
 
 export default function MealDetailPage() {
   const { id } = useParams();
@@ -50,11 +51,16 @@ function calculateTotalNutritionScore(planDetails) {
     return <div>Loading...</div>;
   }
 
+  function handleEdit() {
+    console.log('Edit button clicked');
+  }
+
   return (
     <>
       <h1>Meal Plan Details</h1>
-      <div>
-        <h1>{selectedPlan.name}</h1>
+      <div className="mealHeader">
+        <h1>{selectedPlan.name}</h1> 
+        <button className="editButton" onClick={handleEdit}>Edit</button>
       </div>
       <h2>Breakfast</h2>
       {selectedPlan.breakfast.map((food, index) => (
@@ -97,25 +103,29 @@ function calculateTotalNutritionScore(planDetails) {
         <table>
           <thead>
             <tr>
-              <th>Energy</th>
-              <td>{selectedPlan.breakfast.energy}</td>
+              <th>Energy kcal</th>
+              <td>{parseInt(totalNutritionScore.energy)}/2500</td>
+              <td>{parseInt(totalNutritionScore.energy/2500*100)}%</td>
             </tr>
             <tr>
-              <th>Protein</th>
-              <td>testing</td>
+              <th>Protein (g)</th>
+              <td>{parseInt(totalNutritionScore.protein)}/50</td>
+              <td>{parseInt(totalNutritionScore.protein/50*100)}%</td>
             </tr>
             <tr>
-              <th>Carbs</th>
-              <td>testing</td>
-              <td>testing</td>
+              <th>Carbs</th> 
+              <td>{parseInt(totalNutritionScore.carbs)}/300</td>
+              <td>{parseInt(totalNutritionScore.carbs/300*100)}%</td>
             </tr>
             <tr>
               <th>Fat</th>
-              <td>testing</td>
+              <td>{parseInt(totalNutritionScore.fat)}/300</td>
+              <td>{parseInt(totalNutritionScore.fat/300*100)}%</td>
             </tr>
             <tr>
               <th>Sugars</th>
-              <td>testing</td>
+              <td>{parseInt(totalNutritionScore.sugars)}/50</td>
+              <td>{parseInt(totalNutritionScore.sugars/50*100)}%</td>
             </tr>
           </thead>
         </table>
