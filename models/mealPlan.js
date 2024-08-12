@@ -39,7 +39,7 @@ const mealPlanSchema = new Schema({
     breakfast: [mealSchema],
     lunch: [mealSchema],
     dinner: [mealSchema],
-    snacks: [mealSchema],
+    snack: [mealSchema],
 }, {
     timestampes: true,
     toJSON: {

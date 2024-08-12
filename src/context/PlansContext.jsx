@@ -6,12 +6,23 @@ export const PlansContext = createContext();
 
 export function PlansFetchProvider({ children }) {
 
-        const [plans, setPlans] = useState([])
+        const [plans, setPlans] = useState([]);
+  
 
         async function fetchPlans() {
             try {
-                const data = await getPlans();
-                setPlans(data);
+                const planData = await getPlans();
+                console.log('planData:',planData)
+                const mealData = planData.map(plan => ({
+                    ...plan, 
+                    meals: ['breakfast', 'lunch', 'dinner', 'snack'].flatMap(mealType => 
+                        plan[mealType].map(meal => ({
+                            ...meal,
+                        }))
+                    )
+                }));
+                setPlans(mealData);
+
             } catch (error) {
                 console.error('error fetching meal plans for collection', error)
             }
@@ -20,6 +31,9 @@ export function PlansFetchProvider({ children }) {
         useEffect(() => {
             fetchPlans();
         }, [])
+
+
+
 
     return (
         <PlansContext.Provider value = {{plans, setPlans}}>
