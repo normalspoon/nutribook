@@ -26,6 +26,7 @@ app.use('/api/users', require('./routes/api/users'));
 app.use('/api/plans', require('./routes/api/mealPlans'));
 
 
+
 app.get('/people', function (req,res){
     return res.send(['hi','testing'])
 })

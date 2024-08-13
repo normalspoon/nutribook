@@ -17,11 +17,11 @@ export default function App() {
       <>
         <NavBar user={user} setUser={setUser} />
         <Routes>
-          <Route path="/" element={<MealPlanCollection />} />
-          <Route path="/AddMeal" element={<DailyMealPage />} />
-          <Route path="/MealPlanCollection" element={<MealPlanCollection />} />
-          <Route path="/meal-detail/:id" element={<MealDetailPage/>}/>
-          <Route path="/edit/:id" element={<EditMealPage/>}/>
+          <Route exact path="/" element={<MealPlanCollection />} />
+          <Route exact path="/AddMeal" element={<DailyMealPage />} />
+          <Route exact path="/MealPlanCollection" element={<MealPlanCollection />} />
+          <Route exact path="/meal-detail/:id" element={<MealDetailPage/>}/>
+          <Route exact path="/edit/:id" element={<EditMealPage/>}/>
         </Routes>
       </>
       :

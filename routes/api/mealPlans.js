@@ -10,6 +10,8 @@ const mealPlansCtrl = require('../../controllers/api/plans');
 router.get('/', mealPlansCtrl.index);
 // POST /api/mealPlans
 router.post('/', mealPlansCtrl.create);
+// PUT /api/mealPlans/:id
+router.put('/:id', mealPlansCtrl.update);
 
 
 module.exports = router;
