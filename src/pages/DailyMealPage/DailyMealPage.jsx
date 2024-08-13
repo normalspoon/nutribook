@@ -1,9 +1,11 @@
 import AddMealButton from "../../components/AddMealButton/AddMealButton";
-import { useState } from "react";
-import { createPlan } from "../../utilities/plans-api";
-import { Link } from "react-router-dom";
-    
+import { useState, useContext } from "react";
+import { useNavigate } from "react-router-dom";
+import { PlansContext } from "../../context/PlansContext";
+
 export default function DailyMealPage() {
+    const navigate = useNavigate();
+    const { addPlan } = useContext(PlansContext);
     const [mealPlan, setMealPlan] = useState({
         name: '',
         breakfast: [],
@@ -13,12 +15,14 @@ export default function DailyMealPage() {
     });
 
 
-    function handleSaveMealPlan(){
-        createPlan(mealPlan).then(response => {
+    async function handleSaveMealPlan() {
+        try {
+            const response = await addPlan(mealPlan);
             console.log('Meal plann saved', response);
-        }).catch(error => {
+            navigate('/MealPlanCollection');
+        }   catch (error) {
             console.error('Error saving meal plan', error);
-        });
+        }
     }
 
     function handleMealAdd(mealType, meal){
@@ -75,9 +79,7 @@ export default function DailyMealPage() {
                 ))}
             </div>
             <div className='nutritionScore'>
-            <Link to= "/">
                 <button onClick={handleSaveMealPlan}>Save Meal Plan</button>
-            </Link>
                 <h2>Nutrition Score</h2>
             </div>
         </div>

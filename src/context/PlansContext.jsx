@@ -1,6 +1,6 @@
 import React from 'react';
 import { createContext, useState, useEffect} from 'react';
-import { getPlans } from '../utilities/plans-api';
+import { getPlans, createPlan } from '../utilities/plans-api';
 
 export const PlansContext = createContext();
 
@@ -27,16 +27,25 @@ export function PlansFetchProvider({ children }) {
                 console.error('error fetching meal plans for collection', error)
             }
         }
+
+        async function addPlan(newPlan) {
+            try {
+                const response = await createPlan(newPlan);
+                setPlans(prevPlans => [...prevPlans, response]);
+                return response;
+            } catch (error) {
+                console.error('Error creating new plan', error);
+                throw error;
+            }
+        }
     
         useEffect(() => {
             fetchPlans();
         }, [])
 
 
-
-
     return (
-        <PlansContext.Provider value = {{plans, setPlans}}>
+        <PlansContext.Provider value = {{plans, setPlans, addPlan}}>
             {children}
         </PlansContext.Provider>
     )
