@@ -2,9 +2,9 @@ import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { PlansContext } from "../../context/PlansContext";
 import { Link } from "react-router-dom";
-import './MealDetailPage.css';
+import './EditMealPage.css';
 
-export default function MealDetailPage() {
+export default function EditMealPage() {
   const { id } = useParams();
   const { plans } = useContext(PlansContext);
   const [selectedPlan, setSelectedPlan] = useState(null);
