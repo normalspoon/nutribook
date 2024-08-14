@@ -81,10 +81,14 @@ export default function EditMealPage() {
     })
   }
   function handleMealAdd(mealType, meal) {
-    setMealPlan((prevState) => ({
-      ...prevState,
-      [mealType]: [...prevState[mealType], meal],
-    }));
+    setMealPlan((prevState) => {
+      const updatedMealPlan = {
+        ...prevState,
+        [mealType]: [...prevState[mealType], meal],
+      };
+      calculateTotalNutritionScore(updatedMealPlan);
+      return updatedMealPlan;
+    });
   }
 
   function handleNameChange(event) {
@@ -108,7 +112,7 @@ export default function EditMealPage() {
       </div>
       <div className="dailyMeals">
         <h2>Breakfast</h2>
-        <AddMealButton mealType="breakfast" onMealAdd={handleMealAdd} />
+        <AddMealButton stackOrder={4} mealType="breakfast" onMealAdd={handleMealAdd} />
         {mealPlan.breakfast.map((meal, index) => (
           <div key={index}>
             {meal.name} - {meal.amount} grams -{" "}
@@ -128,7 +132,7 @@ export default function EditMealPage() {
         ))}
 
         <h2>Lunch</h2>
-        <AddMealButton mealType="lunch" onMealAdd={handleMealAdd} />
+        <AddMealButton stackOrder={3} mealType="lunch" onMealAdd={handleMealAdd} />
         {mealPlan.lunch.map((meal, index) => (
           <div key={index}>
             {meal.name} - {meal.amount} grams -{" "}
@@ -148,7 +152,7 @@ export default function EditMealPage() {
         ))}
 
         <h2>Dinner</h2>
-        <AddMealButton mealType="dinner" onMealAdd={handleMealAdd} />
+        <AddMealButton stackOrder={2} mealType="dinner" onMealAdd={handleMealAdd} />
         {mealPlan.dinner.map((meal, index) => (
           <div key={index}>
             {meal.name} - {meal.amount} grams -{" "}
@@ -168,7 +172,7 @@ export default function EditMealPage() {
         ))}
 
         <h2>Snack</h2>
-        <AddMealButton mealType="snack" onMealAdd={handleMealAdd} />
+        <AddMealButton stackOrder={1} mealType="snack" onMealAdd={handleMealAdd} />
         {mealPlan.snack.map((meal, index) => (
           <div key={index}>
             {meal.name} - {meal.amount} grams -{" "}
