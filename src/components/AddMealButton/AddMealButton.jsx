@@ -2,7 +2,7 @@ import {useState} from 'react';
 import SearchBar from '../SearchBar/SearchBar';
 import './AddMealButton.css';
 
-export default function AddMealButton( {mealType, onMealAdd}) {
+export default function AddMealButton( {mealType, onMealAdd, stackOrder}) {
     const [meal, setMeal] = useState(null);
     const [amount, setAmount] = useState(0);
   
@@ -26,7 +26,7 @@ export default function AddMealButton( {mealType, onMealAdd}) {
         <table className='input-table'>
             <tr>
                 <td className='search-bar'>
-                    <SearchBar mealType={mealType} onMealSelect={setMeal}/> 
+                    <SearchBar stackOrder={stackOrder} mealType={mealType} onMealSelect={setMeal}/> 
                 </td>
                 <td className='amount-input'>
                     <input 

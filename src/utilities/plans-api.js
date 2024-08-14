@@ -11,6 +11,7 @@ export function getPlans() {
 }
 
 export function updatePlan(planData) {
+    
     return sendRequest(`${BASE_URL}/${planData._id}`, 'PUT', planData)
 }
 

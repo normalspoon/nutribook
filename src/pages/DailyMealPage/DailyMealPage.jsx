@@ -50,30 +50,34 @@ export default function DailyMealPage() {
             value={mealPlan.name}
             onChange={handleNameChange}/>
         </div>
-        <div className='dailyMeals'>
+        <div className='dailyMeals' style={{ position:'relative' }}>
                 <h2>Breakfast</h2>
-                <AddMealButton mealType="breakfast" onMealAdd={handleMealAdd}/>
+            
+                <div style={{ zIndex: 4}}>
+                <AddMealButton stackOrder={4} mealType="breakfast" onMealAdd={handleMealAdd}/>
                 {mealPlan.breakfast.map((meal, index) => (
                     <div key={index}>{meal.name} - {meal.amount} grams - {((meal.energy /100) * meal.amount)} kcal</div>
                 ))}
+                </div>
                 
                 
                 <h2>Lunch</h2>
-                <AddMealButton mealType="lunch" onMealAdd={handleMealAdd}/>
+                <div style={{ zIndex: 3}}>
+                <AddMealButton stackOrder={3} mealType="lunch" onMealAdd={handleMealAdd}/>
                 {mealPlan.lunch.map((meal, index) => (
                     <div key={index}>{meal.name} - {meal.amount} grams - {((meal.energy /100) * meal.amount)} kcal</div>
                 ))}
-                
+                 </div>
                 
                 <h2>Dinner</h2>
-                <AddMealButton mealType="dinner" onMealAdd={handleMealAdd}/>
+                <AddMealButton stackOrder={2} mealType="dinner" onMealAdd={handleMealAdd}/>
                 {mealPlan.dinner.map((meal, index) => (
                     <div key={index}>{meal.name} - {meal.amount} grams - {((meal.energy /100) * meal.amount)} kcal</div>
                 ))}
                 
                 
                 <h2>Snack</h2>
-                <AddMealButton mealType="snack" onMealAdd={handleMealAdd}/>
+                <AddMealButton stackOrder={1} mealType="snack" onMealAdd={handleMealAdd}/>
                 {mealPlan.snack.map((meal, index) => (
                     <div key={index}>{meal.name} - {meal.amount} grams - {((meal.energy /100) * meal.amount)} kcal</div>
                 ))}

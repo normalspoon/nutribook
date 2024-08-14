@@ -2,7 +2,7 @@ import { useState } from "react"
 import { ReactSearchAutocomplete } from "react-search-autocomplete";
 
 
-export default function SearchBar({ onMealSelect }) {
+export default function SearchBar({ onMealSelect, stackOrder }) {
   const [searchInput, setSearchInput] = useState('');
   const [autocomplete, setAutocomplete] = useState([]);
 
@@ -67,6 +67,7 @@ export default function SearchBar({ onMealSelect }) {
 
   return <div>
     <ReactSearchAutocomplete
+      styling={{ zIndex: stackOrder }}
       items={autocomplete}
       onSearch={handleOnSearch}
       onSelect={handleOnSelect}
