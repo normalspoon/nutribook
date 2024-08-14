@@ -73,6 +73,7 @@ export default function EditMealPage() {
   function handleUpdate() {
     editPlan(mealPlan)
     .then((response) => {
+      setMealPlan(response)
         console.log("Meal plan UPDATED", response);
     })
     .catch((error) => {

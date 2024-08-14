@@ -29,7 +29,7 @@ module.exports = {
 
   async function update(req, res) {
     try {
-      const updatedPlan = await MealPlan.findByIdAndUpdate(req.params.id, req.body);
+      const updatedPlan = await MealPlan.findByIdAndUpdate(req.params.id, req.body, {returnDocument: 'after'});
       res.json(updatedPlan);
     } catch (err) {
       res.status(400).json(err);

@@ -43,6 +43,7 @@ export function PlansFetchProvider({ children }) {
         async function editPlan(updatedPlan) {
             try {
                 const response = await updatePlan(updatedPlan);
+                console.log('DEBUGGING', response)
                 setPlans(prevPlans => prevPlans.map(plan => plan._id === updatedPlan._id ? response : plan));
                 return response;
             } catch (error) {
