@@ -7,7 +7,7 @@ export default function SearchBar({ onMealSelect }) {
   const [autocomplete, setAutocomplete] = useState([]);
 
   const fetchFoodAutocomplete = async (query) => {
-    const apiKey = 'wgQutoUF16Z9JEHWDmdCkY4CJol4FwrwzdJUjIe4';
+    const apiKey = process.env.FOOD_API_KEY;
     try {
       const response = await fetch(`https://api.nal.usda.gov/fdc/v1/foods/search?api_key=${apiKey}&query=${query}`)
       const data = await response.json();

@@ -1,6 +1,7 @@
 import React from 'react';
 import { createContext, useState, useEffect} from 'react';
-import { getPlans, createPlan } from '../utilities/plans-api';
+import { getPlans, createPlan, updatePlan, deletePlan } from '../utilities/plans-api';
+
 
 export const PlansContext = createContext();
 
@@ -38,6 +39,17 @@ export function PlansFetchProvider({ children }) {
                 throw error;
             }
         }
+
+        async function editPlan(updatedPlan) {
+            try {
+                const response = await updatePlan(updatedPlan);
+                setPlans(prevPlans => prevPlans.map(plan => plan._id === updatedPlan._id ? response : plan));
+                return response;
+            } catch (error) {
+                console.error('Error updating meal plan', error);
+                throw error;
+            }
+        }
     
         useEffect(() => {
             fetchPlans();
@@ -45,7 +57,7 @@ export function PlansFetchProvider({ children }) {
 
 
     return (
-        <PlansContext.Provider value = {{plans, setPlans, addPlan}}>
+        <PlansContext.Provider value = {{plans, setPlans, addPlan, editPlan}}>
             {children}
         </PlansContext.Provider>
     )

@@ -4,6 +4,7 @@ module.exports = {
     create,
     index,
     update,
+    delete: deletePlan,
   };
 
 
@@ -35,3 +36,11 @@ module.exports = {
     }
   }
 
+  async function deletePlan(req, res) {
+    try {
+      await MealPlan.findByIdAndDelete(req.params.id);
+      res.json({ message: 'Plan deleted' });
+    } catch (err) {
+      res.status(400).json(err);
+    }
+  }

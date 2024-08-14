@@ -4,7 +4,6 @@ import { PlansContext } from "../../context/PlansContext";
 import { Link } from "react-router-dom";
 import "./EditMealPage.css";
 import AddMealButton from "../../components/AddMealButton/AddMealButton";
-import { updatePlan } from "../../utilities/plans-api";
 
 export default function EditMealPage() {
   const [mealPlan, setMealPlan] = useState({
@@ -16,7 +15,7 @@ export default function EditMealPage() {
   });
 
   const { id } = useParams();
-  const { plans } = useContext(PlansContext);
+  const { plans, editPlan } = useContext(PlansContext);
   const [selectedPlan, setSelectedPlan] = useState(null);
   const [totalNutritionScore, setTotalNutritionScore] = useState({
     energy: 0,
@@ -72,7 +71,7 @@ export default function EditMealPage() {
   // }
 
   function handleUpdate() {
-    updatePlan(mealPlan)
+    editPlan(mealPlan)
     .then((response) => {
         console.log("Meal plan UPDATED", response);
     })
