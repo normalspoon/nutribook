@@ -10,7 +10,7 @@ export default function SearchBar({ onMealSelect, stackOrder }) {
     const apiKey = process.env.REACT_APP_FOOD_API_KEY;
     console.log("this is the api key", apiKey);
     try {
-      const response = await fetch(`https://api.nal.usda.gov/fdc/v1/foods/search?api_key=${apiKey}&query=${query}`)
+      const response = await fetch(`https://api.nal.usda.gov/fdc/v1/foods/search?api_key=wgQutoUF16Z9JEHWDmdCkY4CJol4FwrwzdJUjIe4&query=${query}`)
       const data = await response.json();
       console.log("this is the data",data);
       setAutocomplete(data.foods.map(foodSuggestions => ({ 
