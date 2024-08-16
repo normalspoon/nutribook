@@ -15,7 +15,7 @@ export default function EditMealPage() {
   });
 
   const { id } = useParams();
-  const { plans, editPlan } = useContext(PlansContext);
+  const { plans, editPlan, deleteThePlan } = useContext(PlansContext);
   const [selectedPlan, setSelectedPlan] = useState(null);
   const [totalNutritionScore, setTotalNutritionScore] = useState({
     energy: 0,
@@ -109,6 +109,17 @@ export default function EditMealPage() {
     });
   }
 
+  function handleDelete() {
+    deleteThePlan(id)
+    .then((response) => {
+      setMealPlan(response)
+        console.log("Meal plan deleted", response);
+    })
+    .catch((error) => {
+        console.error("Error deleting meal", error)
+    })
+  }
+
   return (
     <div>
       <h1>Edit Meal Page</h1>
@@ -121,6 +132,9 @@ export default function EditMealPage() {
           onChange={handleNameChange}
         />
       </div>
+      <Link to='/'>
+      <button onClick={handleDelete}>Delete Plan</button>
+      </Link>
       <div className="dailyMeals">
         <h2>Breakfast</h2>
         <AddMealButton stackOrder={4} mealType="breakfast" onMealAdd={handleMealAdd} />

@@ -43,11 +43,21 @@ export function PlansFetchProvider({ children }) {
         async function editPlan(updatedPlan) {
             try {
                 const response = await updatePlan(updatedPlan);
-                console.log('DEBUGGING', response)
                 setPlans(prevPlans => prevPlans.map(plan => plan._id === updatedPlan._id ? response : plan));
                 return response;
             } catch (error) {
                 console.error('Error updating meal plan', error);
+                throw error;
+            }
+        }
+
+        async function deleteThePlan(planId) {
+            try {
+                const response = await deletePlan(planId);
+                setPlans(prevPlans => prevPlans.filter(plan => plan._id !== planId));
+                return response;
+            } catch (error) {
+                console.error('Error deleting meal plan', error);
                 throw error;
             }
         }
@@ -58,7 +68,7 @@ export function PlansFetchProvider({ children }) {
 
 
     return (
-        <PlansContext.Provider value = {{plans, setPlans, addPlan, editPlan}}>
+        <PlansContext.Provider value = {{plans, setPlans, addPlan, editPlan, deleteThePlan}}>
             {children}
         </PlansContext.Provider>
     )
