@@ -40,6 +40,7 @@ const mealPlanSchema = new Schema({
     lunch: [mealSchema],
     dinner: [mealSchema],
     snack: [mealSchema],
+    user: {type: Schema.Types.ObjectId, ref: 'User', required: true},
 }, {
     timestampes: true,
     toJSON: {

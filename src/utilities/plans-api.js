@@ -6,8 +6,8 @@ export function createPlan(planData) {
     return sendRequest(BASE_URL, 'POST', planData);
 }
 
-export function getPlans() {
-    return sendRequest(`${BASE_URL}`)
+export function getPlans(user) {
+    return sendRequest(`${BASE_URL}`, 'GET', {user})
 }
 
 export function updatePlan(planData) {

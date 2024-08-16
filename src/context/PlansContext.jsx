@@ -1,18 +1,19 @@
 import React from 'react';
 import { createContext, useState, useEffect} from 'react';
 import { getPlans, createPlan, updatePlan, deletePlan } from '../utilities/plans-api';
-
+import useUsers from './UsersContext';
 
 export const PlansContext = createContext();
 
 export function PlansFetchProvider({ children }) {
 
         const [plans, setPlans] = useState([]);
-  
+        const {user} = useUsers()
 
         async function fetchPlans() {
             try {
-                const planData = await getPlans();
+                const planData = await getPlans(user._id);
+                console.log("this is the user ID", user._id)
                 console.log('planData:',planData)
                 const mealData = planData.map(plan => ({
                     ...plan, 
@@ -61,10 +62,11 @@ export function PlansFetchProvider({ children }) {
                 throw error;
             }
         }
+
     
         useEffect(() => {
             fetchPlans();
-        }, [])
+        }, [user])
 
 
     return (

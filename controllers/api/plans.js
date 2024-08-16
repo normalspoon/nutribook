@@ -10,7 +10,7 @@ module.exports = {
 
   async function index(req, res) {
     try {
-      const plans = await MealPlan.find({});
+      const plans = await MealPlan.find({user: req.user._id});
       res.json(plans);
     } catch (err) {
       res.status(400).json(err);
@@ -19,7 +19,7 @@ module.exports = {
   async function create(req, res) {
     try {
       console.log('req.body:', req.body)
-      const plan = await MealPlan.create(req.body);
+      const plan = await MealPlan.create({...req.body, user: req.user._id});
       res.json(plan);
     } catch (err) {
       console.error('error creating plan', err)
