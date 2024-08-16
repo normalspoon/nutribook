@@ -116,80 +116,71 @@ export default function EditMealPage() {
         {mealPlan.breakfast.map((meal, index) => (
           <div key={index}>
             {meal.name} - {meal.amount} grams -{" "}
-            {(meal.energy / 100) * meal.amount} kcal
+            Energy: {(meal.energy / 100) * meal.amount} kcal
+            Protein: {meal.protein/ 100 * meal.amount} g
+            Carbs: {meal.carbs/ 100 * meal.amount} g
+            Fat: {meal.fat/ 100 * meal.amount} g
+            Sugars: {meal.sugars/ 100 * meal.amount} g
+            <button>X</button>
           </div>
         ))}
-        {selectedPlan.breakfast.map((food, index) => (
+        {/* {selectedPlan.breakfast.map((food, index) => (
           <div key={index}>
             <p>{food.name}</p>
             <ul>
               <li>
-                Energy: {food.energy} Protein: {food.protein} Carbs:{" "}
+                Energy: Amount: {food.energy} Protein: {food.protein} Carbs:{" "}
                 {food.carbs} Fat: {food.fat} Sugars: {food.sugars}
               </li>
             </ul>
           </div>
-        ))}
+        ))} */}
 
         <h2>Lunch</h2>
         <AddMealButton stackOrder={3} mealType="lunch" onMealAdd={handleMealAdd} />
         {mealPlan.lunch.map((meal, index) => (
           <div key={index}>
             {meal.name} - {meal.amount} grams -{" "}
-            {(meal.energy / 100) * meal.amount} kcal
+            Energy: {(meal.energy / 100) * meal.amount} kcal
+            Protein: {meal.protein/ 100 * meal.amount} g
+            Carbs: {meal.carbs/ 100 * meal.amount} g
+            Fat: {meal.fat/ 100 * meal.amount} g
+            Sugars: {meal.sugars/ 100 * meal.amount} g
+            <button>X</button>
           </div>
         ))}
-        {selectedPlan.lunch.map((food, index) => (
-          <div key={index}>
-            <p>{food.name}</p>
-            <ul>
-              <li>
-                Energy: {food.energy} Protein: {food.protein} Carbs:{" "}
-                {food.carbs} Fat: {food.fat} Sugars: {food.sugars}
-              </li>
-            </ul>
-          </div>
-        ))}
+
 
         <h2>Dinner</h2>
         <AddMealButton stackOrder={2} mealType="dinner" onMealAdd={handleMealAdd} />
         {mealPlan.dinner.map((meal, index) => (
           <div key={index}>
             {meal.name} - {meal.amount} grams -{" "}
-            {(meal.energy / 100) * meal.amount} kcal
+            Energy: {(meal.energy / 100) * meal.amount} kcal
+            Protein: {meal.protein/ 100 * meal.amount} g
+            Carbs: {meal.carbs/ 100 * meal.amount} g
+            Fat: {meal.fat/ 100 * meal.amount} g
+            Sugars: {meal.sugars/ 100 * meal.amount} g
+            <button>X</button>
           </div>
+          
         ))}
-        {selectedPlan.dinner.map((food, index) => (
-          <div key={index}>
-            <p>{food.name}</p>
-            <ul>
-              <li>
-                Energy: {food.energy} Protein: {food.protein} Carbs:{" "}
-                {food.carbs} Fat: {food.fat} Sugars: {food.sugars}
-              </li>
-            </ul>
-          </div>
-        ))}
+
 
         <h2>Snack</h2>
         <AddMealButton stackOrder={1} mealType="snack" onMealAdd={handleMealAdd} />
         {mealPlan.snack.map((meal, index) => (
           <div key={index}>
             {meal.name} - {meal.amount} grams -{" "}
-            {(meal.energy / 100) * meal.amount} kcal
+            Energy: {(meal.energy / 100) * meal.amount} kcal
+            Protein: {meal.protein/ 100 * meal.amount} g
+            Carbs: {meal.carbs/ 100 * meal.amount} g
+            Fat: {meal.fat/ 100 * meal.amount} g
+            Sugars: {meal.sugars/ 100 * meal.amount} g
+            <button>X</button>
           </div>
         ))}
-        {selectedPlan.snack.map((food, index) => (
-          <div key={index}>
-            <p>{food.name}</p>
-            <ul>
-              <li>
-                Energy: {food.energy} Protein: {food.protein} Carbs:{" "}
-                {food.carbs} Fat: {food.fat} Sugars: {food.sugars}
-              </li>
-            </ul>
-          </div>
-        ))}
+   
       </div>
       <div className="nutritionScore">
         <Link to={`/meal-detail/${id}`}>
