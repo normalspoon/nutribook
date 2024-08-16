@@ -67,7 +67,10 @@ export default function SearchBar({ onMealSelect, stackOrder }) {
 
   return <div>
     <ReactSearchAutocomplete
-      styling={{ zIndex: stackOrder }}
+      styling={{ 
+        zIndex: stackOrder,
+        height: '40px',
+      }}
       items={autocomplete}
       onSearch={handleOnSearch}
       onSelect={handleOnSelect}

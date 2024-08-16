@@ -1,15 +1,48 @@
+.bigContainer{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  padding-inline: 200px;
+  padding-top: 50px;
+
+  @media (max-width: 1000px) {
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding-inline: 0px;
+  }
+}
+
+
 .nutritionCardContainer {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  border: 2px solid black;
+  border: 2px solid grey;
   padding: 40px;
   width: fit-content;
   margin: 0 auto;
+  background-color: white;
+  border-radius: 20px;
+  margin: 0 auto;
+
+  @media (max-width: 1000px) {
+    margin-top: 20px;
+}
 }
 
 .mealHeader {
   display: flex;
   justify-content: center;
+}
+
+.mealContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: white;
+  border-radius: 20px;
+  padding: 30px;
+  margin: 0 auto;
 }

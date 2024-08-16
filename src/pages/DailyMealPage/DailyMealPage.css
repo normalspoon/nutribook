@@ -1,0 +1,46 @@
+.input {
+  width: 100%;
+  max-width: 400px;
+  min-width: 50px;
+  font-size: 1rem;
+  padding: 10px;
+  border-radius: 20px;
+  padding-left: 20px;
+
+  @media (max-width: 800px) {
+    width: 70vw;
+    min-height: 30px;
+    font-size: 1rem;
+  }
+}
+.bigContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    padding-inline: 200px;
+    padding-top: 50px;
+
+    @media (max-width: 1000px) {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding-inline: 0px;
+    }
+}
+
+.nutrition-header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.dailyMeals{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 50px;
+}
+

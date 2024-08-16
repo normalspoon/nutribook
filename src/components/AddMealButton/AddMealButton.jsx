@@ -30,9 +30,9 @@ export default function AddMealButton( {mealType, onMealAdd, stackOrder}) {
                 </td>
                 <td className='amount-input'>
                     <input 
+                    className='input-bar-amount'
                     type="number" 
-                    alue ={amount}
-                    placeholder="Amount in grams" 
+                    placeholder="grams" 
                     onChange={handleAmountChange} />
                 </td>
                 <td className='add-button'>

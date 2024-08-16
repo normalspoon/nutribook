@@ -116,10 +116,10 @@ body {
   border-radius: 1vmin;
 }
 
-p.error-message {
+/* p.error-message {
   color: var(--orange);
   text-align: center;
-}
+} */
 
 form {
   display: grid;
@@ -151,6 +151,8 @@ input:focus {
 button, a.button {
   margin: 1vmin;
   padding: 1vmin;
+  min-width: 40px;
+  min-height: 30px;
   color: var(--white);
   background-color: rgba(29, 114, 254, 0.5);
   font-size: 2vmin;
@@ -161,6 +163,11 @@ button, a.button {
   border-radius: .5vmin;
   outline: none;
   cursor: pointer;
+  @media (max-width: 400px) {
+    min-width: 30px;
+    min-height: 20px;
+    font-size: 3vmin;
+  }
 }
 
 button.btn-sm {

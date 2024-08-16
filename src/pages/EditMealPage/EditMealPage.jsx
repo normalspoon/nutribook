@@ -23,6 +23,27 @@ export default function EditMealPage() {
     carbs: 0,
     fat: 0,
     sugars: 0,
+    fiber: 0,
+    iron: 0,
+    sodium: 0,
+    magnesium: 0,
+    niacin: 0,
+    vitaminA: 0,
+    vitaminC: 0,
+    vitaminD: 0,
+    vitaminK: 0,
+    vitaminB12: 0,
+    vitaminE: 0,
+    lycopene: 0,
+    luteinZeaxanthin: 0,
+    cholesterol: 0,
+    saturatedFat: 0,
+    omega3EPA: 0,
+    omega3DHA: 0,
+    zinc: 0,
+    copper: 0,
+    manganese: 0,
+    selenium: 0,
   });
   const fetchPlanDetails = async () => {
     const planDetails = plans.find((plan) => plan._id === id);
@@ -34,17 +55,65 @@ export default function EditMealPage() {
 
   function calculateTotalNutritionScore(planDetails) {
     const meals = ["breakfast", "lunch", "dinner", "snack"];
-    const totals = { energy: 0, protein: 0, carbs: 0, fat: 0, sugars: 0 };
+    const totals = {   
+      energy: 0,
+      protein: 0,
+      carbs: 0,
+      fat: 0,
+      sugars: 0,
+      fiber: 0,
+      iron: 0,
+      sodium: 0,
+      magnesium: 0,
+      niacin: 0,
+      vitaminA: 0,
+      vitaminC: 0,
+      vitaminD: 0,
+      vitaminK: 0,
+      vitaminB12: 0,
+      vitaminE: 0,
+      lycopene: 0,
+      luteinZeaxanthin: 0,
+      cholesterol: 0,
+      saturatedFat: 0,
+      omega3EPA: 0,
+      omega3DHA: 0,
+      zinc: 0,
+      copper: 0,
+      manganese: 0,
+      selenium: 0,
+    };
 
     meals.forEach(function (meal) {
       console.log("meal", meal);
       planDetails[meal].forEach(function (food) {
         console.log("planDetails", planDetails, "food", food);
-        totals.energy += food.energy;
-        totals.protein += food.protein;
-        totals.carbs += food.carbs;
-        totals.fat += food.fat;
-        totals.sugars += food.sugars;
+        totals.energy += (food.energy / 100) * food.amount;
+        totals.protein += (food.protein / 100) * food.amount;
+        totals.carbs += (food.carbs / 100) * food.amount;
+        totals.fat += (food.fat / 100) * food.amount;
+        totals.sugars += (food.sugars / 100) * food.amount;
+        totals.fiber += (food.fiber / 100) * food.amount;
+        totals.iron += (food.iron / 100) * food.amount;
+        totals.sodium += (food.sodium / 100) * food.amount;
+        totals.magnesium += (food.magnesium / 100) * food.amount;
+        totals.niacin += (food.niacin / 100) * food.amount;
+        totals.vitaminA += (food.vitaminA / 100) * food.amount;
+        totals.vitaminC += (food.vitaminC / 100) * food.amount;
+        totals.vitaminD += (food.vitaminD / 100) * food.amount;
+        totals.vitaminK += (food.vitaminK / 100) * food.amount;
+        totals.vitaminB12 += (food.vitaminB12 / 100) * food.amount;
+        totals.vitaminE += (food.vitaminE / 100) * food.amount;
+        totals.lycopene += (food.lycopene / 100) * food.amount;
+        totals.luteinZeaxanthin += (food.luteinZeaxanthin / 100) * food.amount;
+        totals.cholesterol += (food.cholesterol / 100) * food.amount;
+        totals.saturatedFat += (food.saturatedFat / 100) * food.amount;
+        totals.omega3EPA += (food.omega3EPA / 100) * food.amount;
+        totals.omega3DHA += (food.omega3DHA / 100) * food.amount;
+        totals.zinc += (food.zinc / 100) * food.amount;
+        totals.copper += (food.copper / 100) * food.amount;
+        totals.manganese += (food.manganese / 100) * food.amount;
+        totals.selenium += (food.selenium / 100) * food.amount;
       });
     });
     console.log("totals", totals);
@@ -72,13 +141,13 @@ export default function EditMealPage() {
 
   function handleUpdate() {
     editPlan(mealPlan)
-    .then((response) => {
-      setMealPlan(response)
+      .then((response) => {
+        setMealPlan(response);
         console.log("Meal plan UPDATED", response);
-    })
-    .catch((error) => {
-        console.error("Error updating meal", error)
-    })
+      })
+      .catch((error) => {
+        console.error("Error updating meal", error);
+      });
   }
   function handleMealAdd(mealType, meal) {
     setMealPlan((prevState) => {
@@ -104,20 +173,20 @@ export default function EditMealPage() {
         ...prevState,
         [mealType]: prevState[mealType].filter((meal, i) => i !== index),
       };
-      calculateTotalNutritionScore(updatedMealPlan); 
-      return updatedMealPlan; 
+      calculateTotalNutritionScore(updatedMealPlan);
+      return updatedMealPlan;
     });
   }
 
   function handleDelete() {
     deleteThePlan(id)
-    .then((response) => {
-      setMealPlan(response)
+      .then((response) => {
+        setMealPlan(response);
         console.log("Meal plan deleted", response);
-    })
-    .catch((error) => {
-        console.error("Error deleting meal", error)
-    })
+      })
+      .catch((error) => {
+        console.error("Error deleting meal", error);
+      });
   }
 
   return (
@@ -126,27 +195,35 @@ export default function EditMealPage() {
       <div>
         <h2>Name:</h2>
         <input
+          className="input"
           type="text"
           placeholder={`${selectedPlan.name}`}
           value={mealPlan.name}
           onChange={handleNameChange}
         />
       </div>
-      <Link to='/'>
-      <button onClick={handleDelete}>Delete Plan</button>
+      <Link to="/">
+        <button onClick={handleDelete}>Delete Plan</button>
       </Link>
+<div className="bigContainer">
       <div className="dailyMeals">
         <h2>Breakfast</h2>
-        <AddMealButton stackOrder={4} mealType="breakfast" onMealAdd={handleMealAdd} />
+        <AddMealButton
+          stackOrder={4}
+          mealType="breakfast"
+          onMealAdd={handleMealAdd}
+        />
         {mealPlan.breakfast.map((meal, index) => (
           <div key={index}>
-            {meal.name} - {meal.amount} grams -{" "}
-            Energy: {(meal.energy / 100) * meal.amount} kcal
-            Protein: {meal.protein/ 100 * meal.amount} g
-            Carbs: {meal.carbs/ 100 * meal.amount} g
-            Fat: {meal.fat/ 100 * meal.amount} g
-            Sugars: {meal.sugars/ 100 * meal.amount} g
-            <button onClick={() => handleFoodRemove("breakfast", index)}>X</button>
+            {meal.name} - {meal.amount} grams - Energy:{" "}
+            {(meal.energy / 100) * meal.amount} kcal Protein:{" "}
+            {(meal.protein / 100) * meal.amount} g Carbs:{" "}
+            {(meal.carbs / 100) * meal.amount} g Fat:{" "}
+            {(meal.fat / 100) * meal.amount} g Sugars:{" "}
+            {(meal.sugars / 100) * meal.amount} g
+            <button onClick={() => handleFoodRemove("breakfast", index)}>
+              X
+            </button>
           </div>
         ))}
         {/* {selectedPlan.breakfast.map((food, index) => (
@@ -162,55 +239,63 @@ export default function EditMealPage() {
         ))} */}
 
         <h2>Lunch</h2>
-        <AddMealButton stackOrder={3} mealType="lunch" onMealAdd={handleMealAdd} />
+        <AddMealButton
+          stackOrder={3}
+          mealType="lunch"
+          onMealAdd={handleMealAdd}
+        />
         {mealPlan.lunch.map((meal, index) => (
           <div key={index}>
-            {meal.name} - {meal.amount} grams -{" "}
-            Energy: {(meal.energy / 100) * meal.amount} kcal
-            Protein: {meal.protein/ 100 * meal.amount} g
-            Carbs: {meal.carbs/ 100 * meal.amount} g
-            Fat: {meal.fat/ 100 * meal.amount} g
-            Sugars: {meal.sugars/ 100 * meal.amount} g
+            {meal.name} - {meal.amount} grams - 
+            Energy:{" "}{(meal.energy / 100) * meal.amount} kcal 
+            Protein:{" "}{(meal.protein / 100) * meal.amount} g 
+            Carbs:{" "}{(meal.carbs / 100) * meal.amount} g 
+            Fat:{" "}{(meal.fat / 100) * meal.amount} g 
+            Sugars:{" "}{(meal.sugars / 100) * meal.amount} g
             <button onClick={() => handleFoodRemove("lunch", index)}>X</button>
           </div>
         ))}
 
-
         <h2>Dinner</h2>
-        <AddMealButton stackOrder={2} mealType="dinner" onMealAdd={handleMealAdd} />
+        <AddMealButton
+          stackOrder={2}
+          mealType="dinner"
+          onMealAdd={handleMealAdd}
+        />
         {mealPlan.dinner.map((meal, index) => (
           <div key={index}>
-            {meal.name} - {meal.amount} grams -{" "}
-            Energy: {(meal.energy / 100) * meal.amount} kcal
-            Protein: {meal.protein/ 100 * meal.amount} g
-            Carbs: {meal.carbs/ 100 * meal.amount} g
-            Fat: {meal.fat/ 100 * meal.amount} g
-            Sugars: {meal.sugars/ 100 * meal.amount} g
+            {meal.name} - {meal.amount} grams - 
+            Energy:{" "}{(meal.energy / 100) * meal.amount} kcal 
+            Protein:{" "}{(meal.protein / 100) * meal.amount} g 
+            Carbs:{" "}{(meal.carbs / 100) * meal.amount} g 
+            Fat:{" "}{(meal.fat / 100) * meal.amount} g 
+            Sugars:{" "}{(meal.sugars / 100) * meal.amount} g
             <button onClick={() => handleFoodRemove("dinner", index)}>X</button>
           </div>
-          
         ))}
 
-
         <h2>Snack</h2>
-        <AddMealButton stackOrder={1} mealType="snack" onMealAdd={handleMealAdd} />
+        <AddMealButton
+          stackOrder={1}
+          mealType="snack"
+          onMealAdd={handleMealAdd}
+        />
         {mealPlan.snack.map((meal, index) => (
           <div key={index}>
-            {meal.name} - {meal.amount} grams -{" "}
-            Energy: {(meal.energy / 100) * meal.amount} kcal
-            Protein: {meal.protein/ 100 * meal.amount} g
-            Carbs: {meal.carbs/ 100 * meal.amount} g
-            Fat: {meal.fat/ 100 * meal.amount} g
-            Sugars: {meal.sugars/ 100 * meal.amount} g
+            {meal.name} - {meal.amount} grams - 
+            Energy:{" "}{(meal.energy / 100) * meal.amount} kcal 
+            Protein:{" "}{(meal.protein / 100) * meal.amount} g 
+            Carbs:{" "}{(meal.carbs / 100) * meal.amount} g 
+            Fat:{" "}{(meal.fat / 100) * meal.amount} g 
+            Sugars:{" "}{(meal.sugars / 100) * meal.amount} g
             <button onClick={() => handleFoodRemove("snack", index)}>X</button>
           </div>
         ))}
-   
-      </div>
-      <div className="nutritionScore">
-        <Link to={`/meal-detail/${id}`}>
+          <Link to={`/meal-detail/${id}`}>
           <button onClick={handleUpdate}>Update Meal Plan</button>
         </Link>
+      </div>
+      
 
         <div className="nutritionCardContainer">
           <h2>Total Nutrition Score</h2>
@@ -241,10 +326,115 @@ export default function EditMealPage() {
                 <td>{parseInt(totalNutritionScore.sugars)}/50</td>
                 <td>{parseInt((totalNutritionScore.sugars / 50) * 100)}%</td>
               </tr>
+              <tr>
+                <th>Fiber</th>
+                <td>{parseInt(totalNutritionScore.fiber)}/30</td>
+                <td>{parseInt((totalNutritionScore.fiber / 30) * 100)}%</td>
+              </tr>
+              <tr>
+                <th>Iron</th>
+                <td>{parseInt(totalNutritionScore.iron)}/18</td>
+                <td>{parseInt((totalNutritionScore.iron / 18) * 100)}%</td>
+              </tr>
+              <tr>
+                <th>Sodium</th>
+                <td>{parseInt(totalNutritionScore.sodium)}/2300</td>
+                <td>{parseInt((totalNutritionScore.sodium / 2300) * 100)}%</td>
+              </tr>
+              <tr>
+                <th>Magnesium</th>
+                <td>{parseInt(totalNutritionScore.magnesium)}/400</td>
+                <td>{parseInt((totalNutritionScore.magnesium / 400) * 100)}%</td>
+              </tr>
+              <tr>
+                <th>Niacin</th>
+                <td>{parseInt(totalNutritionScore.niacin)}/16</td>
+                <td>{parseInt((totalNutritionScore.niacin / 16) * 100)}%</td>
+              </tr>
+              <tr>
+                <th>Vitamin A</th>
+                <td>{parseInt(totalNutritionScore.vitaminA)}/900</td>
+                <td>{parseInt((totalNutritionScore.vitaminA / 900) * 100)}%</td>
+              </tr>
+              <tr>
+                <th>Vitamin C</th>
+                <td>{parseInt(totalNutritionScore.vitaminC)}/90</td>
+                <td>{parseInt((totalNutritionScore.vitaminC / 90) * 100)}%</td>
+              </tr>
+              <tr>
+                <th>Vitamin D</th>
+                <td>{parseInt(totalNutritionScore.vitaminD)}/20</td>
+                <td>{parseInt((totalNutritionScore.vitaminD / 20) * 100)}%</td>
+              </tr>
+              <tr>
+                <th>Vitamin K</th>
+                <td>{parseInt(totalNutritionScore.vitaminK)}/120</td>
+                <td>{parseInt((totalNutritionScore.vitaminK / 120) * 100)}%</td>
+              </tr>
+              <tr>
+                <th>Vitamin B12</th>
+                <td>{parseInt(totalNutritionScore.vitaminB12)}/2.4</td>
+                <td>{parseInt((totalNutritionScore.vitaminB12 / 2.4) * 100)}%</td>
+              </tr>
+              <tr>
+                <th>Vitamin E</th>
+                <td>{parseInt(totalNutritionScore.vitaminE)}/15</td>
+                <td>{parseInt((totalNutritionScore.vitaminE / 15) * 100)}%</td>
+              </tr>
+              <tr>
+                <th>Lycopene</th>
+                <td>{parseInt(totalNutritionScore.lycopene)}/2000</td>
+                <td>{parseInt((totalNutritionScore.lycopene / 2000) * 100)}%</td>
+              </tr>
+              <tr>
+                <th>Lutein + Zeaxanthin</th>
+                <td>{parseInt(totalNutritionScore.luteinZeaxanthin)}/1000</td>
+                <td>{parseInt((totalNutritionScore.luteinZeaxanthin / 1000) * 100)}%</td>
+              </tr>
+              <tr>
+                <th>Cholesterol</th>
+                <td>{parseInt(totalNutritionScore.cholesterol)}/300</td>
+                <td>{parseInt((totalNutritionScore.cholesterol / 300) * 100)}%</td>
+              </tr>
+              <tr>
+                <th>Saturated Fat</th>
+                <td>{parseInt(totalNutritionScore.saturatedFat)}/20</td>
+                <td>{parseInt((totalNutritionScore.saturatedFat / 20) * 100)}%</td>
+              </tr>
+              <tr>
+                <th>Omega 3 EPA</th>
+                <td>{parseInt(totalNutritionScore.omega3EPA)}/10</td>
+                <td>{parseInt((totalNutritionScore.omega3EPA / 10) * 100)}%</td>
+              </tr>
+              <tr>
+                <th>Omega 3 DHA</th>
+                <td>{parseInt(totalNutritionScore.omega3DHA)}/10</td>
+                <td>{parseInt((totalNutritionScore.omega3DHA / 10) * 100)}%</td>
+              </tr>
+              <tr>
+                <th>Zinc</th>
+                <td>{parseInt(totalNutritionScore.zinc)}/10</td>
+                <td>{parseInt((totalNutritionScore.zinc / 10) * 100)}%</td>
+              </tr>
+              <tr>
+                <th>Copper</th>
+                <td>{parseInt(totalNutritionScore.copper)}/10</td>
+                <td>{parseInt((totalNutritionScore.copper / 10) * 100)}%</td>
+              </tr>
+              <tr>
+                <th>Manganese</th>
+                <td>{parseInt(totalNutritionScore.manganese)}/10</td>
+                <td>{parseInt((totalNutritionScore.manganese / 10) * 100)}%</td>
+              </tr>
+              <tr>
+                <th>Selenium</th>
+                <td>{parseInt(totalNutritionScore.selenium)}/55</td>
+                <td>{parseInt((totalNutritionScore.selenium / 55) * 100)}%</td>
+              </tr>
             </thead>
           </table>
+          </div>
         </div>
       </div>
-    </div>
   );
 }

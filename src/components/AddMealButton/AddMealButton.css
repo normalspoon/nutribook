@@ -12,3 +12,19 @@
     align-items: center;
     width: 100%;
 }
+
+.input-bar-amount {
+    width: 100%;
+    min-width: 70px;
+    font-size: 1rem;
+    padding: 10px;
+    border-radius: 20px;
+    padding-left: 10px;
+  
+    @media (max-width: 800px) {
+      max-width: 70px;
+      min-height: 35px;
+      font-size: 1rem;
+    }
+}
+
