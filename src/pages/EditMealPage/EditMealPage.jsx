@@ -98,6 +98,17 @@ export default function EditMealPage() {
     }));
   }
 
+  function handleFoodRemove(mealType, index) {
+    setMealPlan((prevState) => {
+      const updatedMealPlan = {
+        ...prevState,
+        [mealType]: prevState[mealType].filter((meal, i) => i !== index),
+      };
+      calculateTotalNutritionScore(updatedMealPlan); 
+      return updatedMealPlan; 
+    });
+  }
+
   return (
     <div>
       <h1>Edit Meal Page</h1>
@@ -121,7 +132,7 @@ export default function EditMealPage() {
             Carbs: {meal.carbs/ 100 * meal.amount} g
             Fat: {meal.fat/ 100 * meal.amount} g
             Sugars: {meal.sugars/ 100 * meal.amount} g
-            <button>X</button>
+            <button onClick={() => handleFoodRemove("breakfast", index)}>X</button>
           </div>
         ))}
         {/* {selectedPlan.breakfast.map((food, index) => (
@@ -146,7 +157,7 @@ export default function EditMealPage() {
             Carbs: {meal.carbs/ 100 * meal.amount} g
             Fat: {meal.fat/ 100 * meal.amount} g
             Sugars: {meal.sugars/ 100 * meal.amount} g
-            <button>X</button>
+            <button onClick={() => handleFoodRemove("lunch", index)}>X</button>
           </div>
         ))}
 
@@ -161,7 +172,7 @@ export default function EditMealPage() {
             Carbs: {meal.carbs/ 100 * meal.amount} g
             Fat: {meal.fat/ 100 * meal.amount} g
             Sugars: {meal.sugars/ 100 * meal.amount} g
-            <button>X</button>
+            <button onClick={() => handleFoodRemove("dinner", index)}>X</button>
           </div>
           
         ))}
@@ -177,7 +188,7 @@ export default function EditMealPage() {
             Carbs: {meal.carbs/ 100 * meal.amount} g
             Fat: {meal.fat/ 100 * meal.amount} g
             Sugars: {meal.sugars/ 100 * meal.amount} g
-            <button>X</button>
+            <button onClick={() => handleFoodRemove("snack", index)}>X</button>
           </div>
         ))}
    
