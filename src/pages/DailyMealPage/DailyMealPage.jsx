@@ -69,6 +69,17 @@ export default function DailyMealPage() {
     }));
   }
 
+  function handleFoodRemove(mealType, index) {
+    setMealPlan((prevState) => {
+        const updatedMealPlan = {
+            ...prevState,
+            [mealType]: [...prevState[mealType]].filter((meal, i) => i !== index) 
+        }
+        calculateTotalNutritionScore(updatedMealPlan);
+        return updatedMealPlan;
+    })
+  }
+
   return (
     <div>
       <h1>Daily Meal Page</h1>
@@ -98,7 +109,7 @@ export default function DailyMealPage() {
               Carbs: {meal.carbs / 100 * meal.amount} g
               Fat: {meal.fat / 100 * meal.amount} g
               Sugars: {meal.sugars / 100 * meal.amount} g
-              <button>X</button>
+              <button onClick = {() => handleFoodRemove('breakfast', index)}>X</button>
             </div>
           ))}
         </div>
@@ -118,9 +129,9 @@ export default function DailyMealPage() {
               Carbs: {meal.carbs / 100 * meal.amount} g
               Fat: {meal.fat / 100 * meal.amount} g
               Sugars: {meal.sugars / 100 * meal.amount} g
-              <button>X</button>
+              <button onClick = {() => handleFoodRemove('lunch', index)}>X</button>
             </div>
-          ))}
+          ))} 
         </div>
 
         <h2>Dinner</h2>
@@ -137,8 +148,8 @@ export default function DailyMealPage() {
             Carbs: {meal.carbs / 100 * meal.amount} g
             Fat: {meal.fat / 100 * meal.amount} g
             Sugars: {meal.sugars / 100 * meal.amount} g
-              <button>X</button>
-          </div>
+            <button onClick = {() => handleFoodRemove('dinner', index)}>X</button>
+            </div>
         ))}
 
         <h2>Snack</h2>
@@ -155,7 +166,7 @@ export default function DailyMealPage() {
           Carbs: {meal.carbs / 100 * meal.amount} g
           Fat: {meal.fat / 100 * meal.amount} g
           Sugars: {meal.sugars / 100 * meal.amount} g
-          <button>X</button>
+          <button onClick = {() => handleFoodRemove('snack', index)}>X</button>
           </div>
         ))}
       </div>
