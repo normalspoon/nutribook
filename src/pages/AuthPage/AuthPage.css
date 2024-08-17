@@ -11,6 +11,8 @@
     margin: auto;
     margin-top: 5%;
     padding: 20px;
+    overflow: hidden;
+    min-width: 320px;
 }
 
 .welcome {
@@ -20,5 +22,17 @@
 
     @media (max-width: 768px) {
         font-size: 2rem;
+    }
+}
+
+.authPage {
+    background-image: url(../../background.svg);
+    background-size: cover;
+    background-position: center;
+    height: 100vh !important;
+    overflow: hidden;
+
+    @media (max-width: 1000px) {
+        background-image: url(../../background-two.svg);
     }
 }

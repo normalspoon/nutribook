@@ -8,12 +8,14 @@ export default function AuthPage({ setUser }) {
     const [showLogin, setShowLogin] = useState(true);
     return (
         <main>
+          <div className='authPage'>
             <h1 className='welcome'>Welcome to Nutribook</h1>
             <div className='loginBox'>
             <button onClick={() => setShowLogin(!showLogin)}>
                 {showLogin ? 'Sign Up' : 'Login'}
             </button>
             {showLogin ? <LoginForm setUser={setUser} /> : <SignUpForm setUser={setUser} />}
+            </div>
             </div>
         </main>
      
