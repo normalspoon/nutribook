@@ -44,3 +44,15 @@
     padding-bottom: 50px;
 }
 
+.removeButton{
+    background-color: rgb(223, 225, 229);
+    color: white;
+    font-size: 0.5rem;
+    border: none;
+    padding: 5px;
+    border-radius: 20px;
+    max-width: 20px !important;
+    max-height: 20px !important;
+    min-width: 20px !important;
+    min-height: 20px !important;
+}

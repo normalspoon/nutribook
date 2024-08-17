@@ -130,7 +130,7 @@ export default function MealDetailPage() {
         <h1>{selectedPlan.name}</h1>
         <Link to={`/edit/${id}`}>
           <button className="editButton" onClick={handleEdit}>
-            Edit
+            <span className="material-symbols-outlined">edit</span>
           </button>
         </Link>
       </div>
@@ -141,7 +141,7 @@ export default function MealDetailPage() {
             <div key={index}>
               <p style={{fontWeight: "bold"}}>{food.name}</p>
               <div>
-                Energy: {(food.energy / 100) * food.amount} kcal Protein: {(food.protein / 100) * food.amount} g Carbs: {(food.carbs / 100) * food.amount} g Fat: {(food.fat / 100) * food.amount} g Sugars: {(food.sugars / 100) * food.amount} g
+                Energy: {((food.energy / 100) * food.amount).toFixed(2)} kcal | Protein: {((food.protein / 100) * food.amount).toFixed(2)} g | Carbs: {((food.carbs / 100) * food.amount).toFixed(2)} g | Fat: {((food.fat / 100) * food.amount).toFixed(2)} g | Sugars: {((food.sugars / 100) * food.amount).toFixed(2)} g
               </div>
             </div>
           ))}
@@ -150,7 +150,7 @@ export default function MealDetailPage() {
             <div key={index}>
               <p style={{fontWeight: "bold"}}>{food.name}</p>
               <div>
-                Energy: {(food.energy / 100) * food.amount} kcal Protein: {(food.protein / 100) * food.amount} g Carbs: {(food.carbs / 100) * food.amount} g Fat: {(food.fat / 100) * food.amount} g Sugars: {(food.sugars / 100) * food.amount} g
+                Energy: {((food.energy / 100) * food.amount).toFixed(2)} kcal | Protein: {((food.protein / 100) * food.amount).toFixed(2)} g | Carbs: {((food.carbs / 100) * food.amount).toFixed(2)} g | Fat: {((food.fat / 100) * food.amount).toFixed(2)} g | Sugars: {((food.sugars / 100) * food.amount).toFixed(2)} g
               </div>
             </div>
           ))}
@@ -159,7 +159,7 @@ export default function MealDetailPage() {
             <div key={index}>
               <p style={{fontWeight: "bold"}}>{food.name}</p>
               <div>
-                Energy: {(food.energy / 100) * food.amount} kcal Protein: {(food.protein / 100) * food.amount} g Carbs: {(food.carbs / 100) * food.amount} g Fat: {(food.fat / 100) * food.amount} g Sugars: {(food.sugars / 100) * food.amount} g
+                Energy: {((food.energy / 100) * food.amount).toFixed(2)} kcal | Protein: {((food.protein / 100) * food.amount).toFixed(2)} g | Carbs: {((food.carbs / 100) * food.amount).toFixed(2)} g | Fat: {((food.fat / 100) * food.amount).toFixed(2)} g | Sugars: {((food.sugars / 100) * food.amount).toFixed(2)} g
               </div>
             </div>
           ))}
@@ -168,7 +168,7 @@ export default function MealDetailPage() {
             <div key={index}>
               <p style={{fontWeight: "bold"}}>{food.name}</p>
               <div>
-                Energy: {(food.energy / 100) * food.amount} kcal Protein: {(food.protein / 100) * food.amount} g Carbs: {(food.carbs / 100) * food.amount} g Fat: {(food.fat / 100) * food.amount} g Sugars: {(food.sugars / 100) * food.amount} g
+                Energy: {((food.energy / 100) * food.amount).toFixed(2)} kcal | Protein: {((food.protein / 100) * food.amount).toFixed(2)} g | Carbs: {((food.carbs / 100) * food.amount).toFixed(2)} g | Fat: {((food.fat / 100) * food.amount).toFixed(2)} g | Sugars: {((food.sugars / 100) * food.amount).toFixed(2)} g
               </div>
             </div>
           ))}

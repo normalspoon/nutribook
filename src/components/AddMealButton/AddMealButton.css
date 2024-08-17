@@ -3,7 +3,7 @@
 }
 
 .amount-input {
-    width: 10px;
+    width: 11px;
 }
 
 .input-table {
@@ -15,11 +15,11 @@
 
 .input-bar-amount {
     width: 100%;
-    min-width: 70px;
+    min-width: 80px;
     font-size: 1rem;
     padding: 10px;
     border-radius: 20px;
-    padding-left: 10px;
+    padding-left: 9px;
   
     @media (max-width: 800px) {
       max-width: 70px;
@@ -28,3 +28,25 @@
     }
 }
 
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 24
+}
+
+.add-button {
+    background-color: rgb(223, 225, 229);
+    min-width: 20px !important;
+    min-height: 20px !important;
+    border-radius: 50%;
+    padding: 5px;
+    padding-top: 4px;
+    padding-left: 5px;
+    padding-right: 4px;
+    padding-bottom: 1px;
+    margin: 0 auto;
+    margin-top: 5px;
+    margin-left: 10px;
+  }

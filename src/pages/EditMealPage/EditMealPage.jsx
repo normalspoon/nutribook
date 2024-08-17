@@ -206,7 +206,7 @@ export default function EditMealPage() {
         <button onClick={handleDelete}>Delete Plan</button>
       </Link>
 <div className="bigContainer">
-      <div className="dailyMeals">
+      <div className="mealContainer">
         <h2>Breakfast</h2>
         <AddMealButton
           stackOrder={4}
@@ -215,13 +215,13 @@ export default function EditMealPage() {
         />
         {mealPlan.breakfast.map((meal, index) => (
           <div key={index}>
-            {meal.name} - {meal.amount} grams - Energy:{" "}
-            {(meal.energy / 100) * meal.amount} kcal Protein:{" "}
-            {(meal.protein / 100) * meal.amount} g Carbs:{" "}
-            {(meal.carbs / 100) * meal.amount} g Fat:{" "}
-            {(meal.fat / 100) * meal.amount} g Sugars:{" "}
-            {(meal.sugars / 100) * meal.amount} g
-            <button onClick={() => handleFoodRemove("breakfast", index)}>
+            {meal.name} - {meal.amount} grams <br/>
+            Energy:{" "} {((meal.energy / 100) * meal.amount).toFixed(2)} kcal | 
+            Protein:{" "} {((meal.protein / 100) * meal.amount).toFixed(2)} g | 
+            Carbs:{" "} {((meal.carbs / 100) * meal.amount).toFixed(2)} g | 
+            Fat:{" "} {((meal.fat / 100) * meal.amount).toFixed(2)} g | 
+            Sugars:{" "} {((meal.sugars / 100) * meal.amount).toFixed(2)} g
+            <button className="removeButton" onClick={() => handleFoodRemove("breakfast", index)}>
               X
             </button>
           </div>
@@ -246,13 +246,13 @@ export default function EditMealPage() {
         />
         {mealPlan.lunch.map((meal, index) => (
           <div key={index}>
-            {meal.name} - {meal.amount} grams - 
-            Energy:{" "}{(meal.energy / 100) * meal.amount} kcal 
-            Protein:{" "}{(meal.protein / 100) * meal.amount} g 
-            Carbs:{" "}{(meal.carbs / 100) * meal.amount} g 
-            Fat:{" "}{(meal.fat / 100) * meal.amount} g 
-            Sugars:{" "}{(meal.sugars / 100) * meal.amount} g
-            <button onClick={() => handleFoodRemove("lunch", index)}>X</button>
+            {meal.name} - {meal.amount} grams <br/>
+            Energy:{" "}{((meal.energy / 100) * meal.amount).toFixed(2)} kcal |
+            Protein:{" "}{((meal.protein / 100) * meal.amount).toFixed(2)} g |
+            Carbs:{" "}{((meal.carbs / 100) * meal.amount).toFixed(2)} g |
+            Fat:{" "}{((meal.fat / 100) * meal.amount).toFixed(2)} g |
+            Sugars:{" "}{((meal.sugars / 100) * meal.amount).toFixed(2)} g
+            <button className="removeButton" onClick={() => handleFoodRemove("lunch", index)}>X</button>
           </div>
         ))}
 
@@ -264,13 +264,13 @@ export default function EditMealPage() {
         />
         {mealPlan.dinner.map((meal, index) => (
           <div key={index}>
-            {meal.name} - {meal.amount} grams - 
-            Energy:{" "}{(meal.energy / 100) * meal.amount} kcal 
-            Protein:{" "}{(meal.protein / 100) * meal.amount} g 
-            Carbs:{" "}{(meal.carbs / 100) * meal.amount} g 
-            Fat:{" "}{(meal.fat / 100) * meal.amount} g 
-            Sugars:{" "}{(meal.sugars / 100) * meal.amount} g
-            <button onClick={() => handleFoodRemove("dinner", index)}>X</button>
+            {meal.name} - {meal.amount} grams <br/>
+            Energy:{" "}{((meal.energy / 100) * meal.amount).toFixed(2)} kcal |
+            Protein:{" "}{((meal.protein / 100) * meal.amount).toFixed(2)} g |
+            Carbs:{" "}{((meal.carbs / 100) * meal.amount).toFixed(2)} g |
+            Fat:{" "}{((meal.fat / 100) * meal.amount).toFixed(2)} g |
+            Sugars:{" "}{((meal.sugars / 100) * meal.amount).toFixed(2)} g
+            <button className="removeButton" onClick={() => handleFoodRemove("dinner", index)}>X</button>
           </div>
         ))}
 
@@ -282,13 +282,13 @@ export default function EditMealPage() {
         />
         {mealPlan.snack.map((meal, index) => (
           <div key={index}>
-            {meal.name} - {meal.amount} grams - 
-            Energy:{" "}{(meal.energy / 100) * meal.amount} kcal 
-            Protein:{" "}{(meal.protein / 100) * meal.amount} g 
-            Carbs:{" "}{(meal.carbs / 100) * meal.amount} g 
-            Fat:{" "}{(meal.fat / 100) * meal.amount} g 
-            Sugars:{" "}{(meal.sugars / 100) * meal.amount} g
-            <button onClick={() => handleFoodRemove("snack", index)}>X</button>
+            {meal.name} - {meal.amount} grams <br/>
+            Energy:{" "}{((meal.energy / 100) * meal.amount).toFixed(2)} kcal |
+            Protein:{" "}{((meal.protein / 100) * meal.amount).toFixed(2)} g |
+            Carbs:{" "}{((meal.carbs / 100) * meal.amount).toFixed(2)} g |
+            Fat:{" "}{((meal.fat / 100) * meal.amount).toFixed(2)} g |
+            Sugars:{" "}{((meal.sugars / 100) * meal.amount).toFixed(2)} g
+            <button className="removeButton" onClick={() => handleFoodRemove("snack", index)}>X</button>
           </div>
         ))}
           <Link to={`/meal-detail/${id}`}>

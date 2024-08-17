@@ -30,14 +30,16 @@ export default function AddMealButton( {mealType, onMealAdd, stackOrder}) {
                 </td>
                 <td className='amount-input'>
                     <input 
+                    style={{border: '1px solid rgb(223, 225, 229)'}}
                     className='input-bar-amount'
                     type="number" 
                     placeholder="grams" 
                     onChange={handleAmountChange} />
                 </td>
-                <td className='add-button'>
-                    <button onClick={handleAddMeal}>Add</button>
-                    
+                <td>
+                    <button className='add-button' onClick={handleAddMeal}>
+                    <span class="material-symbols-outlined">add</span>
+                    </button>
                 </td>
             </tr>
         </table>
