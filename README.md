@@ -15,8 +15,8 @@ Many people struggle with planning their meals and ensuring they have the right 
 - HTML
 
 # Screenshots
-![Screenshot](./assets/ss1.png)
-![Screenshot](./assets/ss2.png)
+![Screenshot](./src/pages/assets/ss1.png)
+![Screenshot](./src/pages/assets/ss2.png)
 
 # Launch the app
 https://nutribook.onrender.com
@@ -24,7 +24,7 @@ https://nutribook.onrender.com
 
 # Planning
 https://trello.com/b/tPCEdunU/nutribook
-![Wireframe](./assets/wireframe.png)
+![Wireframe](./src/pages/assets/wireframe.png)
 
 
 # Icebox items and next steps
