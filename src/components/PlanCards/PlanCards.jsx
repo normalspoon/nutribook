@@ -28,7 +28,7 @@ export default function PlanCards(){
         <>
         <div className = 'cardContainer'>
             {plans.map((plan) => (
-                <Link to = {`/meal-detail/${plan._id}`} key={plan._id}>
+                <Link className='card-link' to = {`/meal-detail/${plan._id}`} key={plan._id}>
                 <div className = 'cardOutline'>
                     {plan.name} 
                 </div>

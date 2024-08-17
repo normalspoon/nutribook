@@ -52,9 +52,6 @@ code {
 body {
   margin: 0;
   font-family: 'Poppins', sans-serif;
-  /* -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  background: linear-gradient(to bottom, var(--grape-0), var(--grape-2)); */
   background-size: 100% 400%; 
   padding: 2vmin; 
   margin: 0;
@@ -67,45 +64,6 @@ body {
   width: 100vw;
   background-image: url('./background-two.svg');
 }
-
-/* code {
-  font-family: 'Poppins', sans-serif;
-}
-
-#root {
-  height: 100%;
-}
-
-.align-ctr {
-  text-align: center;
-}
-
-.align-rt {
-  text-align: right;
-} */
-
-/* .smaller {
-  font-size: smaller;
-} */
-/* 
-.flex-ctr-ctr {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-} */
-
-/* .flex-col {
-  flex-direction: column;
-} */
-/* 
-.flex-j-end {
-  justify-content: flex-end;
-} */
-/* 
-.scroll-y {
-  overflow-y: scroll;
-} */
-
 
 
 .section-heading {
@@ -152,7 +110,7 @@ input {
   border: .1vmin solid var(--tan-3);
   border-radius: .5vmin;
   color: var(--text-dark);
-  background-image: none !important; /* prevent lastpass */
+  background-image: none !important; 
   outline: none;
 }
 
@@ -200,4 +158,19 @@ button:disabled, form:invalid button[type="submit"] {
 button[type="submit"] {
   grid-column: span 2;
   margin: 1vmin 0 0;
+}
+
+h1 {
+  font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+
+    @media (max-width: 768px) {
+        font-size: 2rem;
+    }
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
 }

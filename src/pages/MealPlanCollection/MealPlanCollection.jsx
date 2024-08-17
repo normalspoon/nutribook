@@ -15,7 +15,6 @@ export default function MealPlanCollection({}) {
         <button>Add a day's Meal Plan</button>
         </Link>
         {/* <button onClick={handleCheckToken}>Check When My Login Expires</button> */}
-
         <PlanCards/>
         </>
     )

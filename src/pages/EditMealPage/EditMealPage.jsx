@@ -191,7 +191,7 @@ export default function EditMealPage() {
 
   return (
     <div>
-      <h1>Edit Meal Page</h1>
+      <h1>Edit your meal plan</h1>
       <div>
         <h2>Name:</h2>
         <input

@@ -152,7 +152,7 @@ export default function DailyMealPage() {
 
   return (
     <div>
-      <h1>Daily Meal Page</h1>
+      <h1>Create a new meal plan</h1>
       <div>
         <h2>Name:</h2>
         <input

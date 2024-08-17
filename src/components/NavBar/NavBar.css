@@ -1,0 +1,20 @@
+.nav {
+    /* background-color: rgba(255, 255, 255, 0.5); */
+    padding: 10px;
+    /* box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5); */
+    padding-top: 40px;
+    color: blue;
+
+}
+
+.logout:hover {
+    color: var(--red-3);
+}
+
+.meal-plan-collection:hover {
+    color: var(--red-3);
+}
+
+.create-new-meal-plan:hover {
+    color: var(--red-3);
+}
