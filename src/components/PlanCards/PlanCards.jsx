@@ -8,21 +8,6 @@ import { PlansContext } from '../../context/PlansContext'
 export default function PlanCards(){
     const {plans} = useContext(PlansContext)
     
-    //refactoring to context to be more DRY
-    // const [plans, setPlans] = useState([])
-
-    // async function fetchPlans() {
-    //     try {
-    //         const data = await getPlans();
-    //         setPlans(data);
-    //     } catch (error) {
-    //         console.error('error fetching meal plans for collection', error)
-    //     }
-    // }
-
-    // useEffect(() => {
-    //     fetchPlans();
-    // }, [])
 
     return(
         <>

@@ -75,9 +75,7 @@ export default function MealDetailPage() {
       selenium: 0,};
 
     meals.forEach(function (meal) {
-      console.log("meal", meal);
       planDetails[meal].forEach(function (food) {
-        console.log("planDetails", planDetails, "food", food);
         totals.energy += (food.energy / 100) * food.amount;
         totals.protein += (food.protein / 100) * food.amount;
         totals.carbs += (food.carbs / 100) * food.amount;
@@ -106,7 +104,6 @@ export default function MealDetailPage() {
         totals.selenium += (food.selenium / 100) * food.amount;
       });
     });
-    console.log("totals", totals);
     setTotalNutritionScore(totals);
   }
 
@@ -114,13 +111,8 @@ export default function MealDetailPage() {
     fetchPlanDetails();
   }, [id, plans]);
 
-  console.log("selectedPlan", selectedPlan);
   if (!selectedPlan) {
     return <div>Loading...</div>;
-  }
-
-  function handleEdit() {
-    console.log("Edit button clicked");
   }
 
   return (
@@ -129,7 +121,7 @@ export default function MealDetailPage() {
       <div className="mealHeader">
         <h1>{selectedPlan.name}</h1>
         <Link to={`/edit/${id}`}>
-          <button className="editButton" onClick={handleEdit}>
+          <button>
             <span className="material-symbols-outlined">edit</span>
           </button>
         </Link>

@@ -47,7 +47,6 @@ export default function EditMealPage() {
   });
   const fetchPlanDetails = async () => {
     const planDetails = plans.find((plan) => plan._id === id);
-    console.log("planDetails", planDetails);
     setSelectedPlan(planDetails);
     setMealPlan(planDetails);
     calculateTotalNutritionScore(planDetails);
@@ -85,9 +84,7 @@ export default function EditMealPage() {
     };
 
     meals.forEach(function (meal) {
-      console.log("meal", meal);
       planDetails[meal].forEach(function (food) {
-        console.log("planDetails", planDetails, "food", food);
         totals.energy += (food.energy / 100) * food.amount;
         totals.protein += (food.protein / 100) * food.amount;
         totals.carbs += (food.carbs / 100) * food.amount;
@@ -128,16 +125,6 @@ export default function EditMealPage() {
   if (!selectedPlan) {
     return <div>Loading...</div>;
   }
-
-  // function handleSaveMealPlan() {
-  //   createPlan(mealPlan)
-  //     .then((response) => {
-  //       console.log("Meal plann saved", response);
-  //     })
-  //     .catch((error) => {
-  //       console.error("Error saving meal plan", error);
-  //     });
-  // }
 
   function handleUpdate() {
     editPlan(mealPlan)
@@ -182,7 +169,6 @@ export default function EditMealPage() {
     deleteThePlan(id)
       .then((response) => {
         setMealPlan(response);
-        console.log("Meal plan deleted", response);
       })
       .catch((error) => {
         console.error("Error deleting meal", error);
@@ -226,17 +212,6 @@ export default function EditMealPage() {
             </button>
           </div>
         ))}
-        {/* {selectedPlan.breakfast.map((food, index) => (
-          <div key={index}>
-            <p>{food.name}</p>
-            <ul>
-              <li>
-                Energy: Amount: {food.energy} Protein: {food.protein} Carbs:{" "}
-                {food.carbs} Fat: {food.fat} Sugars: {food.sugars}
-              </li>
-            </ul>
-          </div>
-        ))} */}
 
         <h2>Lunch</h2>
         <AddMealButton

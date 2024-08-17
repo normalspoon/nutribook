@@ -13,8 +13,6 @@ export function PlansFetchProvider({ children }) {
         async function fetchPlans() {
             try {
                 const planData = await getPlans(user._id);
-                console.log("this is the user ID", user._id)
-                console.log('planData:',planData)
                 const mealData = planData.map(plan => ({
                     ...plan, 
                     meals: ['breakfast', 'lunch', 'dinner', 'snack'].flatMap(mealType => 

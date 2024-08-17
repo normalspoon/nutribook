@@ -18,7 +18,6 @@ module.exports = {
   }
   async function create(req, res) {
     try {
-      console.log('req.body:', req.body)
       const plan = await MealPlan.create({...req.body, user: req.user._id});
       res.json(plan);
     } catch (err) {

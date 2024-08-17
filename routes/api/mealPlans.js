@@ -2,7 +2,6 @@
 const express = require('express');
 const router = express.Router();
 const mealPlansCtrl = require('../../controllers/api/plans');
-// const MealPlan = require('../../models/mealPlan');
 const ensureLoggedIn = require('../../config/ensureLoggedIn');
 
 

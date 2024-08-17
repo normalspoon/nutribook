@@ -76,9 +76,7 @@ export default function DailyMealPage() {
     };
 
     meals.forEach(function (meal) {
-      console.log("meal", meal);
       planDetails[meal].forEach(function (food) {
-        console.log("planDetails", planDetails, "food", food);
         totals.energy += (food.energy / 100) * food.amount;
         totals.protein += (food.protein / 100) * food.amount;
         totals.carbs += (food.carbs / 100) * food.amount;
@@ -107,14 +105,12 @@ export default function DailyMealPage() {
         totals.selenium += (food.selenium / 100) * food.amount;
       });
     });
-    console.log("totals", totals);
     setTotalNutritionScore(totals);
   }
 
   async function handleSaveMealPlan() {
     try {
       const response = await addPlan(mealPlan);
-      console.log("Meal plann saved", response);
       navigate("/MealPlanCollection");
     } catch (error) {
       console.error("Error saving meal plan", error);
